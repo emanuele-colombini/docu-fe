@@ -1,0 +1,21 @@
+{
+	"name": "docu-fe-devcontainer",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+
+	"postCreateCommand": "yarn install",
+	
+	"forwardPorts": [4200],
+
+	"extensions": [
+		"vscode-icons-team.vscode-icons",
+		"msjsdiag.debugger-for-chrome",
+		"dbaeumer.vscode-eslint",
+		"angular.ng-template"
+	]
+}
