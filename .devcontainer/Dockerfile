@@ -12,5 +12,5 @@ RUN npm i -g @angular/cli@9.1.13
 RUN npm i -g yarn
 
 # creating user
-RUN useradd -ms /bin/bash vscode
-USER vscode
+RUN useradd -ms /bin/bash docu
+USER docu
