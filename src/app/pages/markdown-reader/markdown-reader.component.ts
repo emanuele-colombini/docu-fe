@@ -22,7 +22,7 @@ export class MarkdownReaderComponent implements OnInit {
   
   async ngOnInit() {
     this.http
-      .get(`http://docu-be:8080/api/markdown`)
+      .get(`api/markdown`)
       .subscribe(msg => this.outHtml = this.markdown.render(msg['content']));
   }
 }

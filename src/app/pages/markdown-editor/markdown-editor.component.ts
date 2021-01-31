@@ -17,7 +17,7 @@ export class MarkdownEditorComponent implements OnInit {
 
   async ngOnInit() {
     this.http
-      .get(`http://docu-be:8080/api/markdown`)
+      .get(`api/markdown`)
       .subscribe(msg => this.code = msg['content']);
   }
 
