@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import md from 'markdown-it';
 import mdp from 'markdown-it-plantuml';
 
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-markdown-reader',
   templateUrl: './markdown-reader.component.html',
@@ -17,12 +19,12 @@ export class MarkdownReaderComponent implements OnInit {
   constructor(
     private http: HttpClient
   ) {
-    this.markdown = md().use(mdp); // TODO: configure mdp to use local be server
+    this.markdown = md().use(mdp);
   }
   
   async ngOnInit() {
     this.http
-      .get(`api/markdown`)
-      .subscribe(msg => this.outHtml = this.markdown.render(msg['content']));
+      .get(environment.markdownApi, { responseType: 'json' })
+      .subscribe(msg => this.outHtml =  this.markdown.render(atob(msg['content'])));
   }
 }
