@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { environment } from '../../../environments/environment';
+
+import { MarkdownService } from 'src/app/services/markdown/markdown.service';
 
 @Component({
   selector: 'app-markdown-editor',
@@ -13,14 +14,17 @@ export class MarkdownEditorComponent implements OnInit {
   editorOptions = {theme: 'vs', language: 'markdown'};
   code: string = '# Hello Api';
   
+  get preview(): string {
+    return this.markdownService.renderMarkdown(this.code);
+  } 
+  
   constructor(
-    private http: HttpClient
+    private markdownService: MarkdownService
   ) { }
 
   async ngOnInit() {
-    this.http
-      .get(environment.markdownApi, { responseType: 'text'})
-      .subscribe(msg => this.code = msg['content']);
+    this.markdownService.loadMarkdown()
+      .subscribe(markdown => this.code = markdown);
   }
 
 }
