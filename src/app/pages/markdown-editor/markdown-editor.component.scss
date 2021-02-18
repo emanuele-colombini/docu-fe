@@ -1,5 +1,36 @@
+.page-content {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-.editor-container {
-    height: calc(100% - 60px);
-    margin: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .page-editor {
+        flex-grow: 1;
+        position: relative;
+        
+        .full-editor {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+    .page-preview {
+        flex-grow: 1;
+
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }        
+    }
 }
